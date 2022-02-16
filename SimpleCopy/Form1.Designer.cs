@@ -36,6 +36,7 @@ namespace SimpleCopy
             this.ButtonCopy = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.txtLog = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtSource
@@ -92,18 +93,28 @@ namespace SimpleCopy
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(19, 154);
+            this.txtLog.Location = new System.Drawing.Point(19, 151);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(698, 43);
+            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtLog.Size = new System.Drawing.Size(698, 113);
             this.txtLog.TabIndex = 7;
-            this.txtLog.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 135);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Log";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 135);
+            this.ClientSize = new System.Drawing.Size(729, 276);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.ButtonCopy);
@@ -127,6 +138,7 @@ namespace SimpleCopy
         private System.Windows.Forms.Button ButtonCopy;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.Label label3;
     }
 }
 
