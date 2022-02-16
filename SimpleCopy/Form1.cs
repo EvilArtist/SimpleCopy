@@ -40,6 +40,7 @@ namespace SimpleCopy
                 }
                 var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
                 CleanDestinationDirectory(destinationDirectory);
+
                 progressBar1.Visible = true;
                 await BeforeCopy(sourceDirectoryPath, sourceGitCommands);
                 await BeforeCopy(destinationDirectoryPath, destinationGitCommands);
