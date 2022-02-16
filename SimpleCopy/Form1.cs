@@ -56,21 +56,20 @@ namespace SimpleCopy
                 Directory.CreateDirectory(destinationDir.FullName);
             }
             var files = sourceDir.GetFiles();
-           
-            foreach (FileInfo file in files)
+            Parallel.ForEach(files, file =>
             {
                 string targetFilePath = Path.Combine(destinationDir.FullName, file.Name);
                 file.CopyTo(targetFilePath);
-            }
+            });
+            
             if (recursive)
             {
                 DirectoryInfo[] subDirectories = sourceDir.GetDirectories();
-                foreach (DirectoryInfo subDir in subDirectories)
+                Parallel.ForEach(subDirectories, subDir =>
                 {
                     string newDestinationDir = Path.Combine(destinationDir.FullName, subDir.Name);
-
                     CopyDirectory(subDir, new DirectoryInfo(newDestinationDir), true);
-                }
+                });
             }
         }
 
