@@ -100,7 +100,10 @@ namespace SimpleCopy
                     }
                     foreach (DirectoryInfo dir in directory.GetDirectories())
                     {
-                        dir.Delete(true);
+                        if (!IsDirectoryIgnored(dir))
+                        {
+                            dir.Delete(true);
+                        }
                     }
                 }
                 else
