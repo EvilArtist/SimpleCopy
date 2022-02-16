@@ -35,6 +35,7 @@ namespace SimpleCopy
             this.txtDestination = new System.Windows.Forms.TextBox();
             this.ButtonCopy = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.txtLog = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtSource
@@ -89,11 +90,20 @@ namespace SimpleCopy
             this.progressBar1.TabIndex = 6;
             this.progressBar1.Visible = false;
             // 
+            // txtLog
+            // 
+            this.txtLog.Location = new System.Drawing.Point(19, 186);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.Size = new System.Drawing.Size(698, 43);
+            this.txtLog.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 187);
+            this.ClientSize = new System.Drawing.Size(729, 241);
+            this.Controls.Add(this.txtLog);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.ButtonCopy);
             this.Controls.Add(this.txtDestination);
@@ -115,6 +125,7 @@ namespace SimpleCopy
         private System.Windows.Forms.TextBox txtDestination;
         private System.Windows.Forms.Button ButtonCopy;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.TextBox txtLog;
     }
 }
 

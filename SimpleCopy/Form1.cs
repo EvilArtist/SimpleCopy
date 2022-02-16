@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -24,7 +25,8 @@ namespace SimpleCopy
         {
             string sourceDirectoryPath = txtSource.Text;
             string destinationDirectoryPath = txtDestination.Text;
-
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             var sourceDirectory = new DirectoryInfo(sourceDirectoryPath);
             if (!sourceDirectory.Exists)
             {
@@ -35,6 +37,12 @@ namespace SimpleCopy
             progressBar1.Visible = true;
             await Task.Factory.StartNew(() => CopyDirectory(sourceDirectory, destinationDirectory, true));
             progressBar1.Visible = false;
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            ts.Hours, ts.Minutes, ts.Seconds,
+            ts.Milliseconds / 10);
+            txtLog.Text = "Run Time " + elapsedTime;
         }
 
         private void CopyDirectory(DirectoryInfo sourceDir, DirectoryInfo destinationDir, bool recursive)
@@ -47,8 +55,9 @@ namespace SimpleCopy
             {
                 Directory.CreateDirectory(destinationDir.FullName);
             }
-
-            foreach (FileInfo file in sourceDir.GetFiles())
+            var files = sourceDir.GetFiles();
+           
+            foreach (FileInfo file in files)
             {
                 string targetFilePath = Path.Combine(destinationDir.FullName, file.Name);
                 file.CopyTo(targetFilePath);
