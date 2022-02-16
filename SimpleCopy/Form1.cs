@@ -40,6 +40,7 @@ namespace SimpleCopy
                 }
                 var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
                 CleanDestinationDirectory(destinationDirectory);
+                MessageBox.Show("Please makesure your destination Directory is deleted");
 
                 progressBar1.Visible = true;
                 await BeforeCopy(sourceDirectoryPath, sourceGitCommands);
