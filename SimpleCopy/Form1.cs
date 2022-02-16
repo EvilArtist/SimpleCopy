@@ -23,26 +23,32 @@ namespace SimpleCopy
 
         private async void ButtonCopy_Click(object sender, EventArgs e)
         {
-            string sourceDirectoryPath = txtSource.Text;
-            string destinationDirectoryPath = txtDestination.Text;
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-            var sourceDirectory = new DirectoryInfo(sourceDirectoryPath);
-            if (!sourceDirectory.Exists)
+            try
             {
-                throw new DirectoryNotFoundException($"Source directory not found: {sourceDirectory.FullName}");
+                string sourceDirectoryPath = txtSource.Text;
+                string destinationDirectoryPath = txtDestination.Text;
+                if (string.IsNullOrEmpty(sourceDirectoryPath) || string.IsNullOrEmpty(destinationDirectoryPath))
+                {
+                    throw new Exception($"Source Directory and Destination Directory cannot be empty");
+                }
+                var sourceDirectory = new DirectoryInfo(sourceDirectoryPath);
+                if (!sourceDirectory.Exists)
+                {
+                    throw new DirectoryNotFoundException($"Source directory not found: {sourceDirectory.FullName}");
+                }
+                var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
+                CleanDestinationDirectory(destinationDirectory);
+                progressBar1.Visible = true;
+                await Task.Factory.StartNew(() => CopyDirectory(sourceDirectory, destinationDirectory, true));
             }
-            var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
-            CleanDestinationDirectory(destinationDirectory);
-            progressBar1.Visible = true;
-            await Task.Factory.StartNew(() => CopyDirectory(sourceDirectory, destinationDirectory, true));
-            progressBar1.Visible = false;
-            stopWatch.Stop();
-            TimeSpan ts = stopWatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-            ts.Hours, ts.Minutes, ts.Seconds,
-            ts.Milliseconds / 10);
-            txtLog.Text = "Run Time " + elapsedTime;
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                progressBar1.Visible = false;
+            }
         }
 
         private void CopyDirectory(DirectoryInfo sourceDir, DirectoryInfo destinationDir, bool recursive)

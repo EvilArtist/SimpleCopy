@@ -40,7 +40,7 @@ namespace SimpleCopy
             // 
             // txtSource
             // 
-            this.txtSource.Location = new System.Drawing.Point(19, 72);
+            this.txtSource.Location = new System.Drawing.Point(19, 34);
             this.txtSource.Name = "txtSource";
             this.txtSource.Size = new System.Drawing.Size(334, 20);
             this.txtSource.TabIndex = 0;
@@ -48,7 +48,7 @@ namespace SimpleCopy
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 56);
+            this.label1.Location = new System.Drawing.Point(16, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 1;
@@ -57,7 +57,7 @@ namespace SimpleCopy
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(380, 56);
+            this.label2.Location = new System.Drawing.Point(380, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(20, 13);
             this.label2.TabIndex = 2;
@@ -65,14 +65,14 @@ namespace SimpleCopy
             // 
             // txtDestination
             // 
-            this.txtDestination.Location = new System.Drawing.Point(383, 72);
+            this.txtDestination.Location = new System.Drawing.Point(383, 34);
             this.txtDestination.Name = "txtDestination";
             this.txtDestination.Size = new System.Drawing.Size(334, 20);
             this.txtDestination.TabIndex = 3;
             // 
             // ButtonCopy
             // 
-            this.ButtonCopy.Location = new System.Drawing.Point(325, 110);
+            this.ButtonCopy.Location = new System.Drawing.Point(325, 72);
             this.ButtonCopy.Name = "ButtonCopy";
             this.ButtonCopy.Size = new System.Drawing.Size(75, 23);
             this.ButtonCopy.TabIndex = 4;
@@ -82,7 +82,7 @@ namespace SimpleCopy
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(19, 151);
+            this.progressBar1.Location = new System.Drawing.Point(19, 101);
             this.progressBar1.MarqueeAnimationSpeed = 50;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(698, 23);
@@ -92,17 +92,18 @@ namespace SimpleCopy
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(19, 186);
+            this.txtLog.Location = new System.Drawing.Point(19, 154);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.Size = new System.Drawing.Size(698, 43);
             this.txtLog.TabIndex = 7;
+            this.txtLog.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 241);
+            this.ClientSize = new System.Drawing.Size(729, 135);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.ButtonCopy);
