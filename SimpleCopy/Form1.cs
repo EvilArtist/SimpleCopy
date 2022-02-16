@@ -14,9 +14,10 @@ namespace SimpleCopy
 {
     public partial class Form1 : Form
     {
-        private static bool cleanDirectory = true;
-        private string[] ignoredFolders = { ".git", "node_modules" };
-        private string[] gitCommands = { "add .", "stash", "checkout master", "pull" }; 
+        private static readonly bool cleanDirectory = true;
+        private readonly string[] ignoredFolders = { ".git", "node_modules" };
+        private readonly string[] sourceGitCommands = { "add .", "stash", "checkout master", "pull" }; 
+        private readonly string[] destinationGitCommands = { "add .", "stash", "checkout master", "pull" };
         public Form1()
         {
             InitializeComponent();
@@ -40,9 +41,12 @@ namespace SimpleCopy
                 var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
                 CleanDestinationDirectory(destinationDirectory);
                 progressBar1.Visible = true;
-                await BeforeCopy(sourceDirectoryPath, gitCommands);
-                await BeforeCopy(destinationDirectoryPath, gitCommands);
+                await BeforeCopy(sourceDirectoryPath, sourceGitCommands);
+                await BeforeCopy(destinationDirectoryPath, destinationGitCommands);
+                Log("Start copy");
+                Log("Copying...");
                 await Task.Factory.StartNew(() => CopyDirectory(sourceDirectory, destinationDirectory, true));
+                Log("Copied.");
             }
             catch (Exception exception)
             {
@@ -151,22 +155,30 @@ namespace SimpleCopy
             });
         }
 
-        private void RunGitCommand(string command, string repositoryFolder)
-        {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo("git", command);
-            processStartInfo.WorkingDirectory = repositoryFolder;
-            Process process = new Process()
-            {
-                StartInfo = processStartInfo
-            };
-            process.Start();
-            process.WaitForExit(5000);
-        }
-
         private void Log(string text)
         {
             txtLog.AppendText(text + Environment.NewLine);
             
+        }
+
+        private void BtnBrowseSource_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowNewFolderButton = false;
+            folderBrowserDialog.ShowDialog();
+            if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
+            {
+                txtSource.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
+
+        private void BtnBrowseDestination_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowNewFolderButton = true;
+            folderBrowserDialog.ShowDialog();
+            if (!string.IsNullOrEmpty(folderBrowserDialog.SelectedPath))
+            {
+                txtDestination.Text = folderBrowserDialog.SelectedPath;
+            }
         }
     }
 }

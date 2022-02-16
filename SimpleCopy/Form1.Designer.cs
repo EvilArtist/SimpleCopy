@@ -37,13 +37,16 @@ namespace SimpleCopy
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnBrowseSource = new System.Windows.Forms.Button();
+            this.btnBrowseDestination = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtSource
             // 
             this.txtSource.Location = new System.Drawing.Point(19, 34);
             this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new System.Drawing.Size(334, 20);
+            this.txtSource.Size = new System.Drawing.Size(617, 20);
             this.txtSource.TabIndex = 0;
             // 
             // label1
@@ -58,7 +61,7 @@ namespace SimpleCopy
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(380, 18);
+            this.label2.Location = new System.Drawing.Point(16, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(20, 13);
             this.label2.TabIndex = 2;
@@ -66,14 +69,14 @@ namespace SimpleCopy
             // 
             // txtDestination
             // 
-            this.txtDestination.Location = new System.Drawing.Point(383, 34);
+            this.txtDestination.Location = new System.Drawing.Point(19, 79);
             this.txtDestination.Name = "txtDestination";
-            this.txtDestination.Size = new System.Drawing.Size(334, 20);
+            this.txtDestination.Size = new System.Drawing.Size(617, 20);
             this.txtDestination.TabIndex = 3;
             // 
             // ButtonCopy
             // 
-            this.ButtonCopy.Location = new System.Drawing.Point(325, 72);
+            this.ButtonCopy.Location = new System.Drawing.Point(19, 116);
             this.ButtonCopy.Name = "ButtonCopy";
             this.ButtonCopy.Size = new System.Drawing.Size(75, 23);
             this.ButtonCopy.TabIndex = 4;
@@ -83,7 +86,7 @@ namespace SimpleCopy
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(19, 101);
+            this.progressBar1.Location = new System.Drawing.Point(19, 286);
             this.progressBar1.MarqueeAnimationSpeed = 50;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(698, 23);
@@ -93,7 +96,7 @@ namespace SimpleCopy
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(19, 151);
+            this.txtLog.Location = new System.Drawing.Point(19, 167);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -103,17 +106,39 @@ namespace SimpleCopy
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 135);
+            this.label3.Location = new System.Drawing.Point(21, 151);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Log";
             // 
+            // btnBrowseSource
+            // 
+            this.btnBrowseSource.Location = new System.Drawing.Point(642, 31);
+            this.btnBrowseSource.Name = "btnBrowseSource";
+            this.btnBrowseSource.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowseSource.TabIndex = 9;
+            this.btnBrowseSource.Text = "Browse";
+            this.btnBrowseSource.UseVisualStyleBackColor = true;
+            this.btnBrowseSource.Click += new System.EventHandler(this.BtnBrowseSource_Click);
+            // 
+            // btnBrowseDestination
+            // 
+            this.btnBrowseDestination.Location = new System.Drawing.Point(642, 76);
+            this.btnBrowseDestination.Name = "btnBrowseDestination";
+            this.btnBrowseDestination.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowseDestination.TabIndex = 10;
+            this.btnBrowseDestination.Text = "Browse";
+            this.btnBrowseDestination.UseVisualStyleBackColor = true;
+            this.btnBrowseDestination.Click += new System.EventHandler(this.BtnBrowseDestination_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 276);
+            this.ClientSize = new System.Drawing.Size(729, 322);
+            this.Controls.Add(this.btnBrowseDestination);
+            this.Controls.Add(this.btnBrowseSource);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.progressBar1);
@@ -139,6 +164,9 @@ namespace SimpleCopy
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.Button btnBrowseSource;
+        private System.Windows.Forms.Button btnBrowseDestination;
     }
 }
 
